@@ -1,0 +1,11 @@
+Package: knitrProgressBars
+Type: Package
+Title: Provides Progress Bars in Knitr
+Version: 0.0.1
+Authors@R: person(given = c("Robert", "M"), family = "Flight", email = "rflight79@gmail.com", role = c("aut", "cre"))
+Description: Provides a progress bar that can write to a variety of locations, 
+    including stdout, stderr, or a file. Useful when using `knitr` or `rmarkdown::render`
+    and you still want to see progress of calculations in the terminal.
+License: MIT
+Encoding: UTF-8
+LazyData: true
