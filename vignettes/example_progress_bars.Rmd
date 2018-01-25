@@ -1,0 +1,83 @@
+---
+title: "Example Progress Bar Output"
+author: "Robert M Flight"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example Progress Bars}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r init, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Setup
+
+Load the package, and define the function that will use the progress bar.
+
+```{r setup}
+library(knitrProgressBar)
+arduously_long_nchar <- function(input_var, .pb=NULL) {
+  
+  if ((!is.null(.pb)) && inherits(.pb, "Progress") && (.pb$i < .pb$n)) .pb$tick()$print()
+  
+  Sys.sleep(0.1)
+  
+  nchar(input_var)
+  
+}
+```
+
+## Normal Progress Bar
+
+Will show up in the output document, but not in a terminal running `rmarkdown::render`.
+
+```{r test_pb}
+pb <- progress_estimated(length(letters))
+
+purrr::map_int(letters, arduously_long_nchar, .pb = pb)
+```
+
+## Using stderr()
+
+This one will show up in the terminal when running `rmarkdown::render`.
+
+```{r test_pb_stderr}
+pb <- progress_estimated(length(letters), write_location = stderr())
+
+purrr::map_int(letters, arduously_long_nchar, .pb = pb)
+```
+
+## Using a file
+
+This one will instead write to a file, and can be watched by `tailf` for example
+in a linux-alike.
+
+```{r test_pb_file}
+pb <- progress_estimated(length(letters), write_location = "test.log")
+
+purrr::map_int(letters, arduously_long_nchar, .pb = pb)
+```
+
+We can see that the progress was written to the file by displaying the file contents:
+
+```{r view_file}
+readLines("test.log")
+```
+
+```{r delete_testlog, include = FALSE}
+file.remove("test.log")
+```
+
+## No Progress Bar
+
+```{r test_pb_null}
+pb <- progress_estimated(length(letters), write_location = NULL)
+
+purrr::map_int(letters, arduously_long_nchar, .pb = pb)
+```
