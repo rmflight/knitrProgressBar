@@ -66,6 +66,8 @@ Progress <- R6::R6Class("Progress",
       if (!interactive() ||
         (!is.null(getOption("knitr.in.progress")) && check_stdout(write_location))) { # dplyr used within knitr document
         self$write_location <- NULL
+      } else if (!interactive() && (is.character(write_location) || inherits(write_location, "connection"))) {
+        self$write_location <- write_location
       } else {
         self$write_location <- write_location
       }
