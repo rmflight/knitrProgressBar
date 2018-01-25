@@ -42,8 +42,7 @@
 #' # output to a file
 #' p <- progress_estimated(10, write_location = tempfile(fileext = ".log"))
 #' }
-progress_estimated <- function(n, min_time = 0, write_location = stdout(),
-                               suppress_noninteractive = FALSE) {
+progress_estimated <- function(n, min_time = 0, write_location = stdout()) {
   Progress$new(n, min_time = min_time, write_location = write_location)
 }
 
@@ -60,18 +59,9 @@ Progress <- R6::R6Class("Progress",
     write_location = NULL,
 
     initialize = function(n, min_time = 0, write_location, ...) {
+      self$write_location <- write_location
       self$n <- n
       self$min_time <- min_time
-
-      if (!interactive() ||
-        (!is.null(getOption("knitr.in.progress")) && check_stdout(write_location))) { # dplyr used within knitr document
-        self$write_location <- NULL
-      } else if (!interactive() && (is.character(write_location) || inherits(write_location, "connection"))) {
-        self$write_location <- write_location
-      } else {
-        self$write_location <- write_location
-      }
-
       self$begin()
     },
 
