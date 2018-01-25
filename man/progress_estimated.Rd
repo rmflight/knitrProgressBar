@@ -14,8 +14,6 @@ progress_estimated(n, min_time = 0, write_location = stdout(),
 seconds have elapsed before displaying any results.}
 
 \item{write_location}{where to write the progress to. Default is `stdout()`}
-
-\item{suppress_noninteractive}{don't show progress in a non-interactive process, i.e. rstudio knitr button.}
 }
 \value{
 A ref class with methods `tick()`, `print()`,
@@ -47,5 +45,11 @@ for (i in 1:3) p$pause(0.1)$tick()$print()
 \dontrun{
 p <- progress_estimated(10, min_time = 3)
 for (i in 1:10) p$pause(0.5)$tick()$print()
+
+# output to stderr
+p <- progress_estimated(10, write_location = stderr())
+
+# output to a file
+p <- progress_estimated(10, write_location = tempfile(fileext = ".log"))
 }
 }
