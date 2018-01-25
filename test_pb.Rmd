@@ -1,6 +1,7 @@
 Run this at the beginning so you can see the last one:
 
 ```
+rm test.log
 touch test.log
 tailf test.log
 ```
