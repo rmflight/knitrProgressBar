@@ -1,16 +1,19 @@
+# The original source for much of this came from Hadley Wickham's dplyr
+# code in github.com/tidyverse/dplyr/R/progress.R
+
 #' Progress bar with estimated time.
 #'
-#' This reference class represents a text progress bar displayed estimated
-#' time remaining. When finished, it displays the total duration.  The
-#' automatic progress bar can be disabled by setting `write_location = NULL`
+#' This provides a eference class representing a text progress bar that displays the
+#' estimaged time remaining. When finished, it displays the total duration.  The
+#' automatic progress bar can be disabled by setting `write_location = NULL`.
 #'
 #' @param n Total number of items
 #' @param min_time Progress bar will wait until at least `min_time`
 #'   seconds have elapsed before displaying any results.
-#' @param write_location where to write the progress to. Default is `stderr()`
+#' @param write_location where to write the progress to. Default is `stdout()`
+#' @param suppress_noninteractive don't show progress in a non-interactive process, i.e. rstudio knitr button.
 #' @return A ref class with methods `tick()`, `print()`,
 #'   `pause()`, and `stop()`.
-#' @keywords internal
 #' @export
 #' @examples
 #' p <- progress_estimated(3)
@@ -34,7 +37,8 @@
 #' p <- progress_estimated(10, min_time = 3)
 #' for (i in 1:10) p$pause(0.5)$tick()$print()
 #' }
-progress_estimated <- function(n, min_time = 0, write_location = stdout()) {
+progress_estimated <- function(n, min_time = 0, write_location = stdout(),
+                               suppress_noninteractive = FALSE) {
   Progress$new(n, min_time = min_time, write_location = write_location)
 }
 
@@ -113,7 +117,7 @@ Progress <- R6::R6Class("Progress",
       if (self$stopped) {
         overall <- show_time(self$stop_time - self$init_time)
         if (self$i == self$n) {
-          cat_line("Completed after ", overall)
+          cat_line(file = self$write_location, "Completed after ", overall)
           cat("\n")
         } else {
           cat_line("Killed after ", overall)
