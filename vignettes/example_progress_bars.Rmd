@@ -59,7 +59,8 @@ This one will instead write to a file, and can be watched by `tailf` for example
 in a linux-alike.
 
 ```{r test_pb_file}
-pb <- progress_estimated(length(letters), write_location = "test.log")
+log_loc <- file.path(getwd(), "test.log")
+pb <- progress_estimated(length(letters), write_location = log_loc)
 
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 ```
@@ -67,11 +68,11 @@ purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 We can see that the progress was written to the file by displaying the file contents:
 
 ```{r view_file}
-readLines("test.log")
+readLines(log_loc)
 ```
 
 ```{r delete_testlog, include = FALSE}
-file.remove("test.log")
+file.remove(log_loc)
 ```
 
 ## No Progress Bar
