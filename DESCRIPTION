@@ -1,4 +1,4 @@
-Package: knitrProgressBars
+Package: knitrProgressBar
 Type: Package
 Title: Provides Progress Bars in Knitr
 Version: 0.0.1

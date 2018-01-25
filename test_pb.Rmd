@@ -6,7 +6,7 @@ tailf test.log
 ```
 
 ```{r setup}
-library(knitrProgress)
+library(knitrProgressBar)
 arduously_long_nchar <- function(input_var, .pb=NULL) {
   
   if ((!is.null(.pb)) && inherits(.pb, "Progress") && (.pb$i < .pb$n)) .pb$tick()$print()
