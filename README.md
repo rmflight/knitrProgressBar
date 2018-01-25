@@ -79,6 +79,11 @@ pb <- progress_estimated(length(letters), write_location = NULL)
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 ```
 
+License
+-------
+
+This package is licensed under an MIT license.
+
 Code of Conduct
 ---------------
 
