@@ -59,7 +59,8 @@ This one will instead write to a file, and can be watched by `tailf` for example
 in a linux-alike.
 
 ```{r test_pb_file}
-log_loc <- tempfile(fileext = ".log")
+#log_loc <- tempfile(fileext = ".log")
+log_loc <- "test.log"
 pb <- progress_estimated(length(letters), write_location = log_loc)
 
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
