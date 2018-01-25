@@ -4,8 +4,7 @@
 \alias{progress_estimated}
 \title{Progress bar with estimated time.}
 \usage{
-progress_estimated(n, min_time = 0, write_location = stdout(),
-  suppress_noninteractive = FALSE)
+progress_estimated(n, min_time = 0, write_location = stdout())
 }
 \arguments{
 \item{n}{Total number of items}
