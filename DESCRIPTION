@@ -6,6 +6,14 @@ Authors@R: person(given = c("Robert", "M"), family = "Flight", email = "rflight7
 Description: Provides a progress bar that can write to a variety of locations, 
     including stdout, stderr, or a file. Useful when using `knitr` or `rmarkdown::render`
     and you still want to see progress of calculations in the terminal.
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Imports:
+    R6
+Suggests: 
+    knitr,
+    rmarkdown,
+    purrr
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
