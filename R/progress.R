@@ -5,12 +5,16 @@
 #'
 #' This provides a eference class representing a text progress bar that displays the
 #' estimaged time remaining. When finished, it displays the total duration.  The
-#' automatic progress bar can be disabled by setting `write_location = NULL`.
+#' automatic progress bar can be disabled by setting `progress_location = NULL`.
 #'
 #' @param n Total number of items
 #' @param min_time Progress bar will wait until at least `min_time`
 #'   seconds have elapsed before displaying any results.
-#' @param write_location where to write the progress to. Default is `stdout()`
+#' @param progress_location where to write the progress to. Default is to make
+#' decisions based on location type using `make_kpb_output_decisions()`.
+#'
+#' @seealso [make_kpb_output_decisions()]
+#'
 #' @return A ref class with methods `tick()`, `print()`,
 #'   `pause()`, and `stop()`.
 #' @export
@@ -37,13 +41,13 @@
 #' for (i in 1:10) p$pause(0.5)$tick()$print()
 #'
 #' # output to stderr
-#' p <- progress_estimated(10, write_location = stderr())
+#' p <- progress_estimated(10, progress_location = stderr())
 #'
 #' # output to a file
-#' p <- progress_estimated(10, write_location = tempfile(fileext = ".log"))
+#' p <- progress_estimated(10, progress_location = tempfile(fileext = ".log"))
 #' }
-progress_estimated <- function(n, min_time = 0, write_location = stdout()) {
-  Progress$new(n, min_time = min_time, write_location = write_location)
+progress_estimated <- function(n, min_time = 0, progress_location = make_kpb_output_decisions()) {
+  Progress$new(n, min_time = min_time, progress_location = progress_location)
 }
 
 #' @importFrom R6 R6Class
