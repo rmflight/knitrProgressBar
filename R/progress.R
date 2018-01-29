@@ -60,10 +60,10 @@ Progress <- R6::R6Class("Progress",
     stop_time = NULL,
     min_time = NULL,
     last_update = NULL,
-    write_location = NULL,
+    progress_location = NULL,
 
-    initialize = function(n, min_time = 0, write_location, ...) {
-      self$write_location <- write_location
+    initialize = function(n, min_time = 0, progress_location, ...) {
+      self$progress_location <- progress_location
       self$n <- n
       self$min_time <- min_time
       self$begin()
@@ -105,7 +105,7 @@ Progress <- R6::R6Class("Progress",
     },
 
     print = function(...) {
-      if (is.null(self$write_location)) {
+      if (is.null(self$progress_location)) {
         return(invisible(self))
       }
 
@@ -118,7 +118,7 @@ Progress <- R6::R6Class("Progress",
       if (self$stopped) {
         overall <- show_time(self$stop_time - self$init_time)
         if (self$i == self$n) {
-          cat_line(file = self$write_location, "Completed after ", overall)
+          cat_line(file = self$progress_location, "Completed after ", overall)
           cat("\n")
         } else {
           cat_line("Killed after ", overall)
@@ -131,7 +131,7 @@ Progress <- R6::R6Class("Progress",
       time_left <- (self$n - self$i) * avg
       nbars <- trunc(self$i / self$n * self$width())
 
-      cat_line(file = self$write_location,
+      cat_line(file = self$progress_location,
         "|", str_rep("=", nbars), str_rep(" ", self$width() - nbars), "|",
         format(round(self$i / self$n * 100), width = 3), "% ",
         "~", show_time(time_left), " remaining"
