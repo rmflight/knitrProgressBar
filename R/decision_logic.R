@@ -96,12 +96,6 @@ make_kpb_output_decisions <- function(){
   pb_connection
 }
 
-#' connection description
-#'
-#' @param con a connection object
-#'
-#' @export
-#' @return character string
 get_con_description <- function(con){
   unlist(summary.connection(con))["description"]
 }
