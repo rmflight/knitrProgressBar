@@ -18,42 +18,54 @@ make_kpb_output_decisions <- function(){
   if (is.null(all_options$kpb.use_logfile)) {
     use_logfile <- FALSE
   } else {
-    use_logfile <- all_options$kpb.suppress_noninteractive
+    use_logfile <- all_options$kpb.use_logfile
   }
 
-  if (!is_interactive && is_in_knitr() && !suppress_noninteractive && !use_logfile) {
-    return(stderr())
+  # dont worry about suppressing a non-interactive session or using log-files first
+
+  # use stderr to see progress if we are in knitr and not use a log-file
+  if (is_interactive() && is_in_knitr() && !suppress_noninteractive) {
+    pb_connection <- stderr()
+  } else if (!is_interactive() && is_in_knitr() && !suppress_noninteractive) {
+    # regardless of whether interactive or not, because knitr suppresses the output to stdout
+    pb_connection <- stderr()
+  } else if (is_interactive() && !is_in_knitr() && !suppress_noninteractive) {
+    # however, we can use stdout as soon as we are not in knitr itself
+    pb_connection <- stdout()
+  } else if (!is_interactive() && !is_in_knitr() && !suppress_noninteractive) {
+    pb_connection <- stdout()
+  } else if (!is_interactive() && !is_in_knitr() && suppress_noninteractive) {
+    # now address suppressing non-interactive
+    pb_connection <- NULL
+  } else if (!is_interactive() && is_in_knitr() && suppress_noninteractive) {
+    # now address suppressing non-interactive
+    pb_connection <- NULL
   }
 
-  if (!is_interactive && !is_in_knitr() && !suppress_noninteractive && !use_logfile) {
-    return(stdout())
-  }
-
-  if (!is_interactive && !suppress_noninteractive) {
-    return(NULL)
-  }
-
-  if (is_interactive && is_in_knitr() && !use_logfile) {
-    return(stderr())
-  }
-  if (is_interactive && !is_in_knitr() && !use_logfile) {
-    return(stdout())
-  }
   if (use_logfile) {
     log_connection <- set_logfile(all_options)
 
-    file_loc <- unlist(summary.connection(log_connection))["description"]
-    log_message <- paste0("\nProgress is being logged in: ", file_loc)
-
-    if (is_in_knitr()) {
-      message_con <- stderr()
-      cat(log_message, file = message_con)
-    } else {
-      message_con <- stdout()
-      cat(log_message, file = message_con)
+    if (!is.null(pb_connection)) {
+      log_message <- paste0("\nProgress is being logged in: ",
+                            get_con_description(log_connection), "\n")
+      cat(log_message, file = pb_connection)
     }
-    return(log_connection)
+    # replace the progress bar connection with our new one, b/c we are pushing
+    # it to the log file
+    pb_connection <- log_connection
   }
+
+  pb_connection
+}
+
+#' connection description
+#'
+#' @param con a connection object
+#'
+#' @export
+#' @return character string
+get_con_description <- function(con){
+  unlist(summary.connection(con))["description"]
 }
 
 # defining our own version of `interactive` so we can mock it in the tests
@@ -61,6 +73,10 @@ is_interactive <- function() {interactive()}
 
 is_in_knitr <- function() {
   isTRUE(getOption("knitr.in.progress"))
+}
+
+get_chunk_label <- function() {
+  knitr::opts_current$get()$label
 }
 
 set_logfile <- function(all_options) {
@@ -71,8 +87,8 @@ set_logfile <- function(all_options) {
   }
 
   if (is_in_knitr() && !is.null(all_options$kpb.log_pattern)) {
-    chunk_label <- knitr::opts_current$get()$label
-    logfile <- file(paste0("chunk_", chunk_label, ".log"), open = "w")
+    chunk_label <- get_chunk_label()
+    logfile <- file(paste0(all_options$kpb.log_pattern, chunk_label, ".log"), open = "w")
     class(logfile) <- "kpblogfile"
     return(logfile)
   }
