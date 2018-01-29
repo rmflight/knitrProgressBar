@@ -150,16 +150,6 @@ str_rep <- function(x, i) {
   paste(rep.int(x, i), collapse = "")
 }
 
-check_stdout <- function(connection) {
-  con_info <- unlist(summary(connection))
-  if (con_info["description"] %in% "stdout") {
-    is_stdout <- TRUE
-  } else {
-    is_stdout <- FALSE
-  }
-  is_stdout
-}
-
 show_time <- function(x) {
   if (x < 60) {
     paste(round(x), "s")
