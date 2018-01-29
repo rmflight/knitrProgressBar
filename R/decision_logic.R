@@ -18,6 +18,11 @@
 #'     1. **kpb.log_pattern**: character string providing a pattern to use, will be combined with the chunk
 #'   label to create a log-file for each knitr chunk. **kpb.use_logfile** must be `TRUE`.
 #'
+#' Based on these, it will either return a newly opened connection, either via
+#' `stderr()`, `stdout()`, or a file connection via `file("logfile.log", open = "w")`.
+#' Note that for files this will overwrite a previously existing file, and the contents
+#' will be lost.
+#'
 #' @examples
 #' \dontrun{
 #' # suppress output when not interactive
@@ -38,7 +43,7 @@
 #'
 #' @export
 #'
-#' @return a connection or NULL
+#' @return a writeable connection or NULL
 make_kpb_output_decisions <- function(){
 
   all_options <- options()
