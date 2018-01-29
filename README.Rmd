@@ -4,6 +4,8 @@ output:
     variant: markdown_github
 ---
 
+[![Coverage Status](https://img.shields.io/codecov/c/github/rmflight/knitrProgressBar/master.svg)](https://codecov.io/github/rmflight/knitrProgressBar?branch=master)
+
 ## knitrProgressBar
 
 This package supplies a progress bar (shamelessly borrowed from `dplyr::progress_estimated`)
