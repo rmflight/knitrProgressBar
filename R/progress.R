@@ -138,6 +138,15 @@ Progress <- R6::R6Class("Progress",
       )
 
       invisible(self)
+    },
+
+    finalize = function() {
+      if (!is.null(self$progress_location)) {
+        if (!(get_con_description(self$progress_location) %in% c("stdout", "stderr"))) {
+          close.connection(self$progress_location)
+        }
+      }
+
     }
 
   )
