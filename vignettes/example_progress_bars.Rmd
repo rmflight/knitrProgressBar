@@ -48,7 +48,7 @@ purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 This one will show up in the terminal when running `rmarkdown::render`.
 
 ```{r test_pb_stderr}
-pb <- progress_estimated(length(letters), write_location = stderr())
+pb <- progress_estimated(length(letters), progress_location = stderr())
 
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 ```
@@ -61,7 +61,7 @@ in a linux-alike.
 ```{r test_pb_file}
 log_loc <- tempfile(fileext = ".log")
 
-pb <- progress_estimated(length(letters), write_location = log_loc)
+pb <- progress_estimated(length(letters), progress_location = log_loc)
 
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 ```
@@ -79,7 +79,7 @@ file.remove(log_loc)
 ## No Progress Bar
 
 ```{r test_pb_null}
-pb <- progress_estimated(length(letters), write_location = NULL)
+pb <- progress_estimated(length(letters), progress_location = NULL)
 
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 ```
