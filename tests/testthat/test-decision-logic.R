@@ -76,39 +76,17 @@ test_that("basic decisions work",
 
 )
 #
-# test_that("logfile options work",
-#   {
-#     with_mock(
-#       is_interactive = function() TRUE,
-#       is_in_knitr = function() TRUE,
-#       withr::with_options(list(kpb.use_logfile = TRUE),
-#         expect_message(make_kpb_output_decisions(), "\nProgress is being logged in: kpb_output.log\n")
-#                           )
-#     )
-#
-#       with_mock(
-#         is_interactive = function() TRUE,
-#         is_in_knitr = function() FALSE,
-#         expect_match(get_con_description(make_kpb_output_decisions()), "stdout")
-#       )
-#
-#       with_mock(
-#         is_interactive = function() FALSE,
-#         is_in_knitr = function() TRUE,
-#         expect_match(get_con_description(make_kpb_output_decisions()), "stderr")
-#       )
-#
-#       with_mock(
-#         is_interactive = function() FALSE,
-#         is_in_knitr = function() FALSE,
-#         expect_match(get_con_description(make_kpb_output_decisions()), "stdout")
-#       )
-#
-#       with_mock(
-#         is_interactive = function() FALSE,
-#         is_in_knitr = function() FALSE,
-#         withr::with_options(list(kpb.suppress_noninteractive = TRUE),
-#                             expect_null(make_kpb_output_decisions()))
-#       )
-#     }
-#   )
+test_that("logfile options work",
+  {
+    with_mock(
+      is_interactive = function() TRUE,
+      is_in_knitr = function() FALSE,
+      withr::with_options(list(kpb.use_logfile = TRUE),
+                          {
+                            withr::with_output_sink("logfile_message.txt",
+                                                   make_kpb_output_decisions())
+                          expect_match(paste(scan("logfile_message.txt", sep = "", what = character(), blank.lines.skip = FALSE), collapse = " "),  " Progress is being logged in: kpb_output.log")
+                            }
+    ))
+    }
+  )
