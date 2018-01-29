@@ -1,7 +1,40 @@
 #' decision logic
 #'
-#' Provides functionality to decide **where** the progress should be written,
+#' Provides functionality to decide **how** the progress should be written,
 #' if at all.
+#'
+#' @details
+#'
+#' This function makes decisions about **how** the progress bar should be displayed
+#' based on whether:
+#'
+#' 1. The code is being run in an interactive session or not
+#' 1. The code is part of a `knitr` evaluation using `knit()` or `rmarkdown::render()`
+#' 1. Options set by the user. These options include:
+#'     1. **kpb.suppress_noninteractive**: a logical value. Whether to suppress output
+#'   when being run non-interactively.
+#'     1. **kpb.use_logfile**: logical, should a log-file be used for output?
+#'     1. **kpb.log_file**: character string defining the log-file to use. **kpb.use_logfile** must be `TRUE`.
+#'     1. **kpb.log_pattern**: character string providing a pattern to use, will be combined with the chunk
+#'   label to create a log-file for each knitr chunk. **kpb.use_logfile** must be `TRUE`.
+#'
+#' @examples
+#' \dontrun{
+#' # suppress output when not interactive
+#' options(kpb.suppress_noninteractive = TRUE)
+#'
+#' # use a log-file, will default to kpb_output.txt
+#' options(kpb.use_logfile = TRUE)
+#'
+#' # use a specific log-file
+#' options(kpb.use_logfile = TRUE)
+#' options(kpb.log_file = "progress.txt")
+#'
+#' # use a log-file based on chunk names
+#' options(kpb.use_logfile = TRUE)
+#' options(kpb.log_pattern = "pb_out_")
+#' # for a document with a chunk labeled: "longcalc", this will generate "pb_out_longcalc.log"
+#' }
 #'
 #' @export
 #'
