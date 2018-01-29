@@ -2,7 +2,7 @@
 % Please edit documentation in R/decision_logic.R
 \name{make_kpb_output_decisions}
 \alias{make_kpb_output_decisions}
-\title{decision logic}
+\title{Progress Output Location}
 \usage{
 make_kpb_output_decisions()
 }

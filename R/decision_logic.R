@@ -1,4 +1,4 @@
-#' decision logic
+#' Progress Output Location
 #'
 #' Provides functionality to decide **how** the progress should be written,
 #' if at all.
