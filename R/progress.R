@@ -46,6 +46,8 @@
 #' # output to a file
 #' p <- progress_estimated(10, progress_location = tempfile(fileext = ".log"))
 #' }
+#'
+#' @importFrom R.oo abort
 progress_estimated <- function(n, min_time = 0, progress_location = make_kpb_output_decisions()) {
   Progress$new(n, min_time = min_time, progress_location = progress_location)
 }
@@ -142,8 +144,7 @@ Progress <- R6::R6Class("Progress",
 
     finalize = function() {
       if (!is.null(self$progress_location)) {
-        if (!(get_con_description(self$progress_location) %in% c("stdout", "stderr"))) {
-          class(self$progress_location) <- "connection"
+        if (inherits(self$progress_location, "kpblogfile")) {
           close.connection(self$progress_location)
         }
       }
