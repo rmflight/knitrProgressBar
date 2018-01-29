@@ -10,7 +10,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
-    R6
+    R6,
+    R.oo
 Suggests:
     knitr,
     rmarkdown,
