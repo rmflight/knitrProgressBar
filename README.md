@@ -1,3 +1,9 @@
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/knitrProgressBar)](https://cran.r-project.org/package=knitrProgressBar)
+
+[![Build Status](https://travis-ci.org/rmflight/knitrProgressBar.svg?branch=master)](https://travis-ci.org/rmflight/knitrProgressBar)
+
+[![Coverage Status](https://img.shields.io/codecov/c/github/rmflight/knitrProgressBar/master.svg)](https://codecov.io/github/rmflight/knitrProgressBar?branch=master)
+
 knitrProgressBar
 ----------------
 
@@ -5,7 +11,7 @@ This package supplies a progress bar (shamelessly borrowed from `dplyr::progress
 
 ### Installation
 
-To install this package, use `devtools`:
+This package is not yet on CRAN. To install this package, use `devtools`:
 
     devtools::install_github("rmflight/knitrProgressBar")
 
@@ -17,17 +23,19 @@ You want to use `knitr` or `rmarkdown`, but you want to see the progress of a lo
 Solution
 --------
 
-This package has one function, `progress_estimated`, that allows you to redirect the output from the progress bar, either to the `R` terminal (`stdout`, the default), to `stderr`, so the output stays in the terminal while `knitr` is running, or to a file, so you can use `tailf` or something similar on the command line to watch the progress in the file, or occasionally open the file to see progress.
+This package has one function, `progress_estimated`, that creates a `Progress` object that has a connection object associated with it. The output from the progress will be written to **that** connection. This connection will be either `stdout` (default within an R session), `stderr` (default from within `knitr`), or to a log-file.
 
-Example Usage
--------------
+Examples
+--------
 
-None of these are run in this document.
+None of these are run in this document!
 
 ### Setup
 
 ``` r
 library(knitrProgressBar)
+
+# borrowed from example by @hrbrmstr
 arduously_long_nchar <- function(input_var, .pb=NULL) {
   
   if ((!is.null(.pb)) && inherits(.pb, "Progress") && (.pb$i < .pb$n)) .pb$tick()$print()
@@ -39,9 +47,9 @@ arduously_long_nchar <- function(input_var, .pb=NULL) {
 }
 ```
 
-### Normal Progress to stdout
+### Let Function Decide
 
-Useful to use these progress bars in the `R` terminal itself. Will show up in a `knit`ted document, but not in a terminal running `knitr` or `rmarkdown::render`.
+If you want the object to decide where to put output, do nothing. Just call the `progress_estimated()` function, which uses `make_kpb_output_decisions()`:
 
 ``` r
 pb <- progress_estimated(length(letters))
@@ -49,35 +57,35 @@ pb <- progress_estimated(length(letters))
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 ```
 
-### Progress to stderr
+See the help and the vignette for an explanation of how `make_kpb_output_decisions()` decides where to display the progress bar output.
 
-This will use `stderr()` to view the progress bar in the `R` terminal when running from `knitr` or `rmarkdown::render`.
+### Write to Specific Connection
+
+If you want to write the progress out to a specific connection, just pass the connection to the `progress_estimated()` call:
 
 ``` r
-pb <- progress_estimated(length(letters), write_location = stderr())
+pb <- progress_estimated(length(letters), progress_location = stdout())
 
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 ```
 
-### Progress to file
-
-This will use a file to keep track of the progress.
+This includes specific files. You can then display the file, or use `tailf` or equivalent to watch the output of the file.
 
 ``` r
-pb <- progress_estimated(length(letters), write_location = "test.log")
+pb <- progress_estimated(length(letters), progress_location = file("progress.log", open = "w"))
 
 purrr::map_int(letters, arduously_long_nchar, .pb = pb)
 ```
 
-### No Progress
+Connection Considerations
+-------------------------
 
-If you want to keep the progress function call, but want to suppress the output completely, use `NULL` instead.
+Each connection will display in specific situations, notably `stdout()` will not display to the terminal when run as part of a document being `knit`ted.
 
-``` r
-pb <- progress_estimated(length(letters), write_location = NULL)
+Bug Reports
+-----------
 
-purrr::map_int(letters, arduously_long_nchar, .pb = pb)
-```
+Please submit bug reports using the GitHub [issue tracker](https://github.com/rmflight/knitrProgressBar/issues).
 
 License
 -------
