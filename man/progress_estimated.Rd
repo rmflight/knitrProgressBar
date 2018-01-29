@@ -4,24 +4,26 @@
 \alias{progress_estimated}
 \title{Progress bar with estimated time.}
 \usage{
-progress_estimated(n, min_time = 0, write_location = stdout())
+progress_estimated(n, min_time = 0,
+  progress_location = make_kpb_output_decisions())
 }
 \arguments{
 \item{n}{Total number of items}
 
-\item{min_time}{Progress bar will wait until at least `min_time`
+\item{min_time}{Progress bar will wait until at least \code{min_time}
 seconds have elapsed before displaying any results.}
 
-\item{write_location}{where to write the progress to. Default is `stdout()`}
+\item{progress_location}{where to write the progress to. Default is to make
+decisions based on location type using \code{make_kpb_output_decisions()}.}
 }
 \value{
-A ref class with methods `tick()`, `print()`,
-  `pause()`, and `stop()`.
+A ref class with methods \code{tick()}, \code{print()},
+\code{pause()}, and \code{stop()}.
 }
 \description{
 This provides a eference class representing a text progress bar that displays the
 estimaged time remaining. When finished, it displays the total duration.  The
-automatic progress bar can be disabled by setting `write_location = NULL`.
+automatic progress bar can be disabled by setting \code{progress_location = NULL}.
 }
 \examples{
 p <- progress_estimated(3)
@@ -46,9 +48,13 @@ p <- progress_estimated(10, min_time = 3)
 for (i in 1:10) p$pause(0.5)$tick()$print()
 
 # output to stderr
-p <- progress_estimated(10, write_location = stderr())
+p <- progress_estimated(10, progress_location = stderr())
 
 # output to a file
-p <- progress_estimated(10, write_location = tempfile(fileext = ".log"))
+p <- progress_estimated(10, progress_location = tempfile(fileext = ".log"))
 }
+
+}
+\seealso{
+\code{\link[=make_kpb_output_decisions]{make_kpb_output_decisions()}}
 }
