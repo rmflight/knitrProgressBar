@@ -76,7 +76,12 @@ is_in_knitr <- function() {
 }
 
 get_chunk_label <- function() {
-  knitr::opts_current$get()$label
+  if (is_in_knitr()){
+    out_label <- knitr::opts_current$get()$label
+  } else {
+    out_label <- ""
+  }
+  out_label
 }
 
 set_logfile <- function(all_options) {
