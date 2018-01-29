@@ -125,19 +125,19 @@ get_chunk_label <- function() {
 set_logfile <- function(all_options) {
   if (!is.null(all_options$kpb.log_file)) {
     logfile <- file(all_options$kpb.log_file, open = "w")
-    class(logfile) <- "kpblogfile"
+    attr(logfile, "class") <- "kpblogfile"
     return(logfile)
   }
 
   if (is_in_knitr() && !is.null(all_options$kpb.log_pattern)) {
     chunk_label <- get_chunk_label()
     logfile <- file(paste0(all_options$kpb.log_pattern, chunk_label, ".log"), open = "w")
-    class(logfile) <- "kpblogfile"
+    attr(logfile, "class") <- "kpblogfile"
     return(logfile)
   }
 
   logfile <- file("kpb_output.log", open = "w")
-  class(logfile) <- "kpblogfile"
+  attr(logfile, "class") <- "kpblogfile"
   logfile
 
 }
