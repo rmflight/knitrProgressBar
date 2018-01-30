@@ -111,12 +111,6 @@ Progress <- R6::R6Class("Progress",
         return(invisible(self))
       }
 
-      now_ <- now()
-      if (now_ - self$init_time < self$min_time || now_ - self$last_update < 0.05) {
-        return(invisible(self))
-      }
-      self$last_update <- now_
-
       if (self$stopped) {
         overall <- show_time(self$stop_time - self$init_time)
         if (self$i == self$n) {
@@ -128,6 +122,12 @@ Progress <- R6::R6Class("Progress",
         }
         return(invisible(self))
       }
+
+      now_ <- now()
+      if (now_ - self$init_time < self$min_time || now_ - self$last_update < 0.05) {
+        return(invisible(self))
+      }
+      self$last_update <- now_
 
       avg <- (now() - self$init_time) / self$i
       time_left <- (self$n - self$i) * avg

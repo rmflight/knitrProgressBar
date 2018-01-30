@@ -32,9 +32,10 @@ particular example is courtesy of [Bob Rudis](https://rud.is/b/2017/03/27/all-in
 
 ```{r setup}
 library(knitrProgressBar)
+
 arduously_long_nchar <- function(input_var, .pb=NULL) {
   
-  if ((!is.null(.pb)) && inherits(.pb, "Progress") && (.pb$i < .pb$n)) .pb$tick()$print()
+  update_progress(.pb) # this is a function provided by the package
   
   Sys.sleep(0.1)
   
