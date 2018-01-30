@@ -17,6 +17,7 @@ test_that("logfile choices work",
       class(con) <- "connection"
       con_desc <- unlist(summary.connection(con))["description"]
       close.connection(con)
+      file.remove(con_desc)
       con_desc
     },
 
@@ -27,7 +28,10 @@ test_that("logfile choices work",
     expect_match(get_con_description(set_logfile(all_options)), "hiknitrchunk.log"),
 
     all_options <- list(),
-    expect_match(get_con_description(set_logfile(all_options)), "kpb_output.log")
+    {
+      expect_match(get_con_description(set_logfile(all_options)), "kpb_output.log")
+    }
+
 
   )
 )
@@ -88,5 +92,7 @@ test_that("logfile options work",
                           expect_match(paste(scan("logfile_message.txt", sep = "", what = character(), blank.lines.skip = FALSE), collapse = " "),  " Progress is being logged in: kpb_output.log")
                             }
     ))
+    file.remove("logfile_message.txt")
+    file.remove("kpb_output.log")
     }
   )

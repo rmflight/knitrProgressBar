@@ -20,6 +20,7 @@ test_that("regular progress works", {
       withr::with_output_sink("test_pb.txt",
                 run_pb())
       expect_match(paste(suppressMessages(readLines("test_pb.txt", warn = FALSE)), collapse = ""), "|========================================================================================================|100% ~0 s remaining")
+      file.remove("test_pb.txt")
     }
 
   )
