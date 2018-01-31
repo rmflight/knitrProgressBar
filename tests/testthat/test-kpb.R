@@ -25,3 +25,8 @@ test_that("regular progress works", {
 
   )
 })
+
+test_that("length warnings and errors work", {
+  expect_error(progress_estimated(1), "n must be > 1!")
+  expect_warning(progress_estimated(letters), "n is not a number, trying to take the length of n ...")
+})

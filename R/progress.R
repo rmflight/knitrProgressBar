@@ -49,6 +49,13 @@
 #'
 #' @importFrom R.oo abort
 progress_estimated <- function(n, min_time = 0, progress_location = make_kpb_output_decisions()) {
+  if (!inherits(n, c("numeric", "integer"))) {
+    warning("n is not a number, trying to take the length of n ...")
+    n <- length(n)
+  }
+  if (n <= 1) {
+    stop("n must be > 1!")
+  }
   Progress$new(n, min_time = min_time, progress_location = progress_location)
 }
 
