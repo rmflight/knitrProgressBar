@@ -2,7 +2,12 @@ Package: knitrProgressBar
 Type: Package
 Title: Provides Progress Bars in Knitr
 Version: 0.9.0
-Authors@R: person(given = c("Robert", "M"), family = "Flight", email = "rflight79@gmail.com", role = c("aut", "cre"))
+Authors@R: c(person(given = c("Robert", "M"), family = "Flight", email = "rflight79@gmail.com", role = c("aut", "cre")),
+            person("Hadley", "Wickham", role = "ctb", comment = "Author of included dplyr fragments"),
+            person("Romain", "Francois", role = "ctb", comment = "Author of included dplyr fragments"),
+            person("Lionel", "Henry", role = "ctb", comment = "Author of included dplyr fragments"),
+            person("Kirill", "Müller", role = "ctb", comment = "Author of included dplyr fragments"),
+            person("RStudio", role = "cph", comment = "Copyright holder of included dplyr fragments"))
 Description: Provides a progress bar that can write to a variety of locations, 
     including stdout, stderr, or a file. Useful when using `knitr` or `rmarkdown::render`
     and you still want to see progress of calculations in the terminal.
