@@ -1,8 +1,4 @@
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/knitrProgressBar)](https://cran.r-project.org/package=knitrProgressBar)
-
-[![Build Status](https://travis-ci.org/rmflight/knitrProgressBar.svg?branch=master)](https://travis-ci.org/rmflight/knitrProgressBar)
-
-[![Coverage Status](https://img.shields.io/codecov/c/github/rmflight/knitrProgressBar/master.svg)](https://codecov.io/github/rmflight/knitrProgressBar?branch=master)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/knitrProgressBar)](https://cran.r-project.org/package=knitrProgressBar) [![Build Status](https://travis-ci.org/rmflight/knitrProgressBar.svg?branch=master)](https://travis-ci.org/rmflight/knitrProgressBar) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rmflight/knitrProgressBar?branch=master&svg=true)](https://ci.appveyor.com/project/rmflight/knitrProgressBar) [![Coverage Status](https://img.shields.io/codecov/c/github/rmflight/knitrProgressBar/master.svg)](https://codecov.io/github/rmflight/knitrProgressBar?branch=master)
 
 knitrProgressBar
 ----------------
@@ -82,15 +78,15 @@ Connection Considerations
 
 Each connection will display in specific situations, notably `stdout()` will not display to the terminal when run as part of a document being `knit`ted.
 
+Inspiration
+-----------
+
+This package (and the examples) was inspired by [this post](https://rud.is/b/2017/03/27/all-in-on-r%E2%81%B4-progress-bars-on-first-post/) from Bob Rudis! Also, thanks to Hadley Wickham for the great `Progress` object and methods!
+
 Bug Reports
 -----------
 
 Please submit bug reports using the GitHub [issue tracker](https://github.com/rmflight/knitrProgressBar/issues).
-
-License
--------
-
-This package is licensed under an MIT license.
 
 Code of Conduct
 ---------------
