@@ -7,7 +7,7 @@
 make_kpb_output_decisions()
 }
 \value{
-a writeable connection or NULL
+a write-able connection or NULL
 }
 \description{
 Provides functionality to decide \strong{how} the progress should be written,

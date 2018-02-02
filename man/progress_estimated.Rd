@@ -21,8 +21,8 @@ A ref class with methods \code{tick()}, \code{print()},
 \code{pause()}, and \code{stop()}.
 }
 \description{
-This provides a eference class representing a text progress bar that displays the
-estimaged time remaining. When finished, it displays the total duration.  The
+This provides a reference class representing a text progress bar that displays the
+estimated time remaining. When finished, it displays the total duration.  The
 automatic progress bar can be disabled by setting \code{progress_location = NULL}.
 }
 \examples{
