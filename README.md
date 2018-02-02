@@ -1,3 +1,4 @@
+
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/knitrProgressBar)](https://cran.r-project.org/package=knitrProgressBar) [![Build Status](https://travis-ci.org/rmflight/knitrProgressBar.svg?branch=master)](https://travis-ci.org/rmflight/knitrProgressBar) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rmflight/knitrProgressBar?branch=master&svg=true)](https://ci.appveyor.com/project/rmflight/knitrProgressBar) [![Coverage Status](https://img.shields.io/codecov/c/github/rmflight/knitrProgressBar/master.svg)](https://codecov.io/github/rmflight/knitrProgressBar?branch=master)
 
 knitrProgressBar
