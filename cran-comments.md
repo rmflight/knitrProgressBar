@@ -1,4 +1,5 @@
 ## Test environments
+
 * local ubuntu 16.04, R 3.4.2
 * ubuntu 14.04 (on travis-ci), old-release, current, and dev
 * win-builder (devel and release)
@@ -13,3 +14,7 @@
 ## Reverse dependencies
 
 This is a new release, so there are no reverse dependencies.
+
+## Changes in Response to CRAN
+
+* put 'knitr' and 'rmarkdown' in single, undirected quotes.
