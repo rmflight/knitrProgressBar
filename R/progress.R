@@ -41,8 +41,8 @@
 
 #' Progress bar with estimated time.
 #'
-#' This provides a eference class representing a text progress bar that displays the
-#' estimaged time remaining. When finished, it displays the total duration.  The
+#' This provides a reference class representing a text progress bar that displays the
+#' estimated time remaining. When finished, it displays the total duration.  The
 #' automatic progress bar can be disabled by setting `progress_location = NULL`.
 #'
 #' @param n Total number of items

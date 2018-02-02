@@ -43,7 +43,7 @@
 #'
 #' @export
 #'
-#' @return a writeable connection or NULL
+#' @return a write-able connection or NULL
 make_kpb_output_decisions <- function(){
 
   all_options <- options()
