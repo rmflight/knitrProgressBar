@@ -78,12 +78,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/rmflight/knitrProgressBar">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -143,7 +138,7 @@ decisions based on location type using <code><a href='make_kpb_output_decisions.
 <span class='no'>p</span>$<span class='fu'>tick</span>()
 
 <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>progress_estimated</span>(<span class='fl'>3</span>)
-<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>) <span class='no'>p</span>$<span class='fu'>pause</span>(<span class='fl'>0.1</span>)$<span class='fu'>tick</span>()$<span class='fu'>print</span>()</div><div class='output co'>#&gt; |==================                                    | 33% ~1 s remaining     |====================================                  | 67% ~1 s remaining     |======================================================|100% ~0 s remaining     </div><div class='input'>
+<span class='kw'>for</span> (<span class='no'>i</span> <span class='kw'>in</span> <span class='fl'>1</span>:<span class='fl'>3</span>) <span class='no'>p</span>$<span class='fu'>pause</span>(<span class='fl'>0.1</span>)$<span class='fu'>tick</span>()$<span class='fu'>print</span>()</div><div class='output co'>#&gt; |==================                                    | 33% ~0 s remaining     |====================================                  | 67% ~0 s remaining     |======================================================|100% ~0 s remaining     </div><div class='input'>
 <span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'>progress_estimated</span>(<span class='fl'>3</span>)
 <span class='no'>p</span>$<span class='fu'>tick</span>()$<span class='fu'>print</span>()$
  <span class='fu'>pause</span>(<span class='fl'>1</span>)$<span class='fu'>stop</span>()</div><div class='output co'>#&gt; </div><div class='input'>

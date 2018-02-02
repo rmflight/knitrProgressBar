@@ -12,7 +12,7 @@ Description: Provides a progress bar that can write to a variety of locations,
     including stdout, stderr, or a file. Useful when using `knitr` or `rmarkdown::render`
     and you still want to see progress of calculations in the terminal.
 BugReports: https://github.com/rmflight/knitrProgressBar/issues
-URL: https://github.com/rmflight/knitrProgressBar
+URL: https://rmflight.github.io/knitrProgressBar
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

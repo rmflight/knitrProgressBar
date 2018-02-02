@@ -4,7 +4,7 @@
 knitrProgressBar
 ----------------
 
-This package supplies a progress bar (shamelessly borrowed from `dplyr::progress_estimated`) that has options to **not** have output captured inside a `knitr` chunk.
+[This package](https://rmflight.github.io/knitrProgressBar) supplies a progress bar (shamelessly borrowed from `dplyr::progress_estimated`) that has options to **not** have output captured inside a `knitr` chunk.
 
 ### Installation
 
@@ -83,6 +83,11 @@ Inspiration
 -----------
 
 This package (and the examples) was inspired by [this post](https://rud.is/b/2017/03/27/all-in-on-r%E2%81%B4-progress-bars-on-first-post/) from Bob Rudis! Also, thanks to Hadley Wickham for the great `Progress` object and methods!
+
+Website
+-------
+
+Web accessible documentation is available [here](https://rmflight.github.io/knitrProgressBar).
 
 Bug Reports
 -----------
