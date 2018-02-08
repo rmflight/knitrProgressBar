@@ -17,4 +17,5 @@ This is a new release, so there are no reverse dependencies.
 
 ## Changes in Response to CRAN
 
-* put 'knitr' and 'rmarkdown' in single, undirected quotes.
+* put 'knitr', 'dplyr' and 'rmarkdown' in single, undirected quotes.
+* added brackets to function names.
