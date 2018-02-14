@@ -27,8 +27,8 @@ you do, all the output from the progress bar will be suppressed
 
 ## Solution
 
-This package has one function, `progress_estimated`, that creates a `Progress` object
-that has a connection object associated with it. The output from the progress
+This package has two functions, `progress_estimated`, that creates a `Progress` object
+that has a connection object associated with it, and `update_progress`, that properly updates the progress object. The output from the progress
 will be written to **that** connection. This connection will be either
 `stdout` (default within an R session), `stderr` (default from within `knitr`),
 or to a log-file.
@@ -45,7 +45,7 @@ library(knitrProgressBar)
 # borrowed from example by @hrbrmstr
 arduously_long_nchar <- function(input_var, .pb=NULL) {
   
-  if ((!is.null(.pb)) && inherits(.pb, "Progress") && (.pb$i < .pb$n)) .pb$tick()$print()
+  update_progress(.pb)
   
   Sys.sleep(0.5)
   
