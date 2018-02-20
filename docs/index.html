@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Provides Progress Bars in Knitr • knitrProgressBar</title>
+<title>Provides Progress Bars in 'knitr' • knitrProgressBar</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -46,6 +46,9 @@
   <ul class="dropdown-menu" role="menu">
 <li>
       <a href="articles/example_progress_bars.html">Example Progress Bar Output</a>
+    </li>
+    <li>
+      <a href="articles/multiprocessing.html">Progress for Multi-Processing</a>
     </li>
   </ul>
 </li>
@@ -89,7 +92,7 @@
 <div id="solution" class="section level2">
 <h2 class="hasAnchor">
 <a href="#solution" class="anchor"></a>Solution</h2>
-<p>This package has one function, <code>progress_estimated</code>, that creates a <code>Progress</code> object that has a connection object associated with it. The output from the progress will be written to <strong>that</strong> connection. This connection will be either <code>stdout</code> (default within an R session), <code>stderr</code> (default from within <code>knitr</code>), or to a log-file.</p>
+<p>This package has two functions, <code>progress_estimated</code>, that creates a <code>Progress</code> object that has a connection object associated with it, and <code>update_progress</code>, that properly updates the progress object. The output from the progress will be written to <strong>that</strong> connection. This connection will be either <code>stdout</code> (default within an R session), <code>stderr</code> (default from within <code>knitr</code>), or to a log-file.</p>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
@@ -103,7 +106,7 @@
 <span class="co"># borrowed from example by @hrbrmstr</span>
 arduously_long_nchar &lt;-<span class="st"> </span><span class="cf">function</span>(input_var, <span class="dt">.pb=</span><span class="ot">NULL</span>) {
   
-  <span class="cf">if</span> ((<span class="op">!</span><span class="kw">is.null</span>(.pb)) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">inherits</span>(.pb, <span class="st">"Progress"</span>) <span class="op">&amp;&amp;</span><span class="st"> </span>(.pb<span class="op">$</span>i <span class="op">&lt;</span><span class="st"> </span>.pb<span class="op">$</span>n)) .pb<span class="op">$</span><span class="kw">tick</span>()<span class="op">$</span><span class="kw">print</span>()
+  <span class="kw"><a href="reference/update_progress.html">update_progress</a></span>(.pb)
   
   <span class="kw">Sys.sleep</span>(<span class="fl">0.5</span>)
   
@@ -170,6 +173,8 @@ purrr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
     <h2 class="hasAnchor">
 <a href="#sidebar" class="anchor"></a>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=knitrProgressBar">https://​cran.r-project.org/​package=knitrProgressBar</a>
+</li>
 <li>Report a bug at <br><a href="https://github.com/rmflight/knitrProgressBar/issues">https://​github.com/​rmflight/​knitrProgressBar/​issues</a>
 </li>
 </ul>
