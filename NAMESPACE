@@ -2,6 +2,8 @@
 
 export(make_kpb_output_decisions)
 export(progress_estimated)
+export(set_progress_mp)
 export(update_progress)
+export(watch_progress_mp)
 importFrom(R.oo,abort)
 importFrom(R6,R6Class)

@@ -1,3 +1,8 @@
+# knitrProgressBar 1.1.0
+
+* Added ability to see progress for multi-process taks. See the 
+vignette "Progress for Multi-Processing" for more details.
+
 # knitrProgressBar 1.0.0
 
 * Added testing on travis-ci and appveyor.

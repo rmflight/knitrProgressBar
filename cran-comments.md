@@ -9,13 +9,9 @@
 0 errors | 1 warnings | 1 note
 
 * Failure to convert README.md due to inability to fetch a badge image
-* This is a new release.
 
 ## Reverse dependencies
 
 This is a new release, so there are no reverse dependencies.
 
 ## Changes in Response to CRAN
-
-* put 'knitr', 'dplyr' and 'rmarkdown' in single, undirected quotes.
-* added brackets to function names.
