@@ -8,7 +8,11 @@ knitrProgressBar
 
 ### Installation
 
-This package is not yet on CRAN. To install this package, use `devtools`:
+This package can be installed from CRAN by:
+
+    install.packages("knitrProgressBar")
+
+To install the development version of this package, use `devtools`:
 
     devtools::install_github("rmflight/knitrProgressBar")
 
