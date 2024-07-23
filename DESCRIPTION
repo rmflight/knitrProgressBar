@@ -28,5 +28,5 @@ Suggests:
     withr,
     parallel
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)

@@ -4,8 +4,12 @@
 \alias{watch_progress_mp}
 \title{watch progress from multi process}
 \usage{
-watch_progress_mp(n, min_time = 0, watch_location = NULL,
-  progress_location = make_kpb_output_decisions())
+watch_progress_mp(
+  n,
+  min_time = 0,
+  watch_location = NULL,
+  progress_location = make_kpb_output_decisions()
+)
 }
 \arguments{
 \item{n}{number of times process is running}

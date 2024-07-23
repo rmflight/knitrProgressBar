@@ -162,7 +162,7 @@ Progress <- R6::R6Class("Progress",
           cat_line(file = self$progress_location, "Completed after ", overall)
           cat("\n")
         } else {
-          cat_line("Killed after ", overall)
+          cat_line(file = self$progress_location, "Killed after ", overall)
           cat("\n")
         }
         return(invisible(self))

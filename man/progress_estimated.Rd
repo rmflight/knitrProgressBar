@@ -4,8 +4,11 @@
 \alias{progress_estimated}
 \title{Progress bar with estimated time.}
 \usage{
-progress_estimated(n, min_time = 0,
-  progress_location = make_kpb_output_decisions())
+progress_estimated(
+  n,
+  min_time = 0,
+  progress_location = make_kpb_output_decisions()
+)
 }
 \arguments{
 \item{n}{Total number of items}
