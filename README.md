@@ -14,9 +14,9 @@ This package can be installed from CRAN by:
 
     install.packages("knitrProgressBar")
 
-To install the development version of this package, use `devtools`:
+To install the development version of this package, use `remotes`:
 
-    devtools::install_github("rmflight/knitrProgressBar")
+    remotes::install_github("rmflight/knitrProgressBar")
 
 ## Problem
 
@@ -108,7 +108,7 @@ object and methods!
 ## Website
 
 Web accessible documentation is available
-[here](https://rmflight.github.io/knitrProgressBar).
+[here](https://rmflight.github.io/knitrProgressBar/).
 
 ## Bug Reports
 
