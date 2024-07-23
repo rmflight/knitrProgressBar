@@ -1,7 +1,7 @@
 Package: knitrProgressBar
 Type: Package
 Title: Provides Progress Bars in 'knitr'
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: c(person(given = c("Robert", "M"), family = "Flight", email = "rflight79@gmail.com", role = c("aut", "cre")),
             person("Hadley", "Wickham", role = "ctb", comment = "Author of included dplyr fragments"),
             person("Romain", "Francois", role = "ctb", comment = "Author of included dplyr fragments"),
@@ -15,7 +15,6 @@ BugReports: https://github.com/rmflight/knitrProgressBar/issues
 URL: https://rmflight.github.io/knitrProgressBar
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Imports:
     R6,
     R.oo
