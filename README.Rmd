@@ -2,12 +2,13 @@
 output: rmarkdown::github_document
 ---
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/knitrProgressBar)](https://cran.r-project.org/package=knitrProgressBar) [![Build Status](https://travis-ci.org/rmflight/knitrProgressBar.svg?branch=master)](https://travis-ci.org/rmflight/knitrProgressBar) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rmflight/knitrProgressBar?branch=master&svg=true)](https://ci.appveyor.com/project/rmflight/knitrProgressBar) [![Coverage Status](https://img.shields.io/codecov/c/github/rmflight/knitrProgressBar/master.svg)](https://codecov.io/github/rmflight/knitrProgressBar?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/knitrProgressBar)](https://cran.r-project.org/package=knitrProgressBar) 
+[![GH_Status_Badge](https://github.com/rmflight/knitrProgressBar/actions/workflows/r.yml/badge.svg)](https://github.com/rmflight/knitrProgressBar/actions/workflows/r.yml)
 
 
 ## knitrProgressBar
 
-[This package](https://rmflight.github.io/knitrProgressBar) supplies a progress bar (shamelessly borrowed from `dplyr::progress_estimated`)
+[This package](https://rmflight.github.io/knitrProgressBar/) supplies a progress bar (shamelessly borrowed from `dplyr::progress_estimated`)
 that has options to **not** have output captured inside a `knitr` chunk.
 
 ### Installation
@@ -113,8 +114,8 @@ Please submit bug reports using the GitHub [issue tracker](https://github.com/rm
 
 ## Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://github.com/rmflight/knitrProgressBar/blob/main/CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## License
 
-This package is licensed using an [MIT license](LICENSE.md), copyright Robert M Flight.
+This package is licensed using an [MIT license](https://github.com/rmflight/knitrProgressBar/blob/main/LICENSE.md), copyright Robert M Flight.
